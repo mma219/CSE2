@@ -1,3 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////
+//Matthew Addessi
+//HW 02 - Arithmetic (calculate sales tax, total costs, etc.)
+//Professor Chen
+//September 8, 2015
+//Section 111
+
 
 //  define a class
 public class Arithmetic{
