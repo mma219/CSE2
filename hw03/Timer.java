@@ -29,11 +29,11 @@ public class Timer { //create main class
         double subtractMinutes = (double)(dinnerMinutes-currentMinutes); //subtracts the minutes after hour of currentTime from minutes after hour of dinnerTime 
       
         if(subtractMinutes<0) { //if statement so that if subractMinutes is less than 0 it finds the remainder when it is divided by 60, multiplied by -1 to get a positive #, and subtracted from 60 
-            System.out.println(differenceTime+" hours and " + (int)((60-(subtractMinutes%60)*-1)) +" minutes.");
+            System.out.println("You have "+differenceTime+" hours and " + (int)((60-(subtractMinutes%60)*-1)) +" minutes until dinner.");
         } //close the if statement
         
         else{ //if subtractMinutes is greater than 0, then it doesn't need any extra calculations so it is just tacked on after the # of hours
-            System.out.println(differenceTime+" hours and " + (int)subtractMinutes +" minutes.");
+            System.out.println("You have "+differenceTime+" hours and " + (int)subtractMinutes +" minutes until dinner.");
         } //close the else statement
 
         
