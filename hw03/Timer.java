@@ -6,8 +6,6 @@
 //Section 111
 //Purpose of this program is to get the current time from user and time of dinner, and to tell then how much time there is until dinner
 
-
-
 import java.util.Scanner; //import the scanner
 
 public class Timer { //create main class
@@ -20,24 +18,15 @@ public class Timer { //create main class
         System.out.print("Dinner time: "); //message asking for dinner time
         double dinnerTime = myScanner.nextInt(); //scanner to store next integer as dinnerTime
 
+        int numMinutesCurrent = ((int) ((currentTime)/100)*60) + (int) (currentTime%100); //convert the current time to number of minutes in the day
+        int numMinutesDinner = ((int) ((dinnerTime)/100)*60) + (int) (dinnerTime%100); //convert the time of dinner to number of minutes in the day
+        
+        int minutesDifference = (int) numMinutesDinner-numMinutesCurrent; //subtract the minutes of the day currently from the minutes of the day at dinnertime
 
-        double currentMinutes = currentTime%100; //get the remainder of dividing currentTime by 100, results in minutes after the hour
-        double dinnerMinutes = dinnerTime%100; //get the remainder of dividing dinnerTime by 100, results in minutes after the hour
+        int numHoursUntil = (int) (minutesDifference/60); //calculate the number of hours until dinner given minutes
+        int minutesAfterHour = (int) (minutesDifference%60); //calculate the number of minutes after the hour until dinner
         
-        int differenceTime = (int) ((dinnerTime-currentTime)/100); //subtracts currentTime from dinnerTime and divides by 100 to get HOURS till dinner
-        
-        double subtractMinutes = (double)(dinnerMinutes-currentMinutes); //subtracts the minutes after hour of currentTime from minutes after hour of dinnerTime 
-      
-        if(subtractMinutes<0) { //if statement so that if subractMinutes is less than 0 it finds the remainder when it is divided by 60, multiplied by -1 to get a positive #, and subtracted from 60 
-            System.out.println("You have "+differenceTime+" hours and " + (int)((60-(subtractMinutes%60)*-1)) +" minutes until dinner.");
-        } //close the if statement
-        
-        else{ //if subtractMinutes is greater than 0, then it doesn't need any extra calculations so it is just tacked on after the # of hours
-            System.out.println("You have "+differenceTime+" hours and " + (int)subtractMinutes +" minutes until dinner.");
-        } //close the else statement
+        System.out.println("You have " + numHoursUntil + " hours and "+minutesAfterHour+" minutes until dinner." ); //print hours and minutes until dinner
 
-        
-        
-        
     } //close the method
 } //close the class
