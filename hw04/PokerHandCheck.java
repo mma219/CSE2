@@ -7,7 +7,7 @@
 //Picks a random "card" from a deck and prints out the suit and identity of the card
 
 
-public class CardGenerator { //create main class
+public class PokerHandCheck { //create main class
     public static void main(String[] args) { //create main method
     
     
@@ -33,7 +33,8 @@ public class CardGenerator { //create main class
          if(cardNum>39&&cardNum<=52) {
              suit="Spades";
          }
-          int cardNumModulus = cardNum%13;
+         
+         int cardNumModulus = cardNum%13;
          
 //A bunch of switches  to define the identity of the card (ie the first card of each suit is the ace, 2nd is 2,etc.)
         switch(cardNumModulus){
@@ -95,7 +96,6 @@ public class CardGenerator { //create main class
         }
         
         System.out.println("You picked the "+identity+" of "+suit); //print out the identity and suit of the card
-
 
     
     }
