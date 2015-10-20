@@ -20,7 +20,7 @@ public class Twisty { //create class
         boolean acceptable = false;
         boolean acceptable2 = false;
         
-        System.out.println("NOTE: I was only able to get it to work flawlessly with odd widths and odd lengths. Was sick and missed TA hours due to this.");
+        //System.out.println("NOTE: I was only able to get it to work flawlessly with odd widths and odd lengths. Was sick and missed TA hours due to this.");
 //INPUT # 1
         //loop until you get acceptable input (i.e. if it's a integer)
         System.out.print("Input your desired length: ");
