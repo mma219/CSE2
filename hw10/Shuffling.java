@@ -18,18 +18,19 @@ public class Shuffling{ //create main class
             num2 = (int)(Math.random()*52);
         }
         num3 = (int)(Math.random()*52);
-        while(num3==num2){
+        while(num3==num2 || num3==num1){
             num3 = (int)(Math.random()*52);
         }
         num4 = (int)(Math.random()*52);
-        while(num4==num3){
+        while(num4==num3 || num4==num2 || num4==num1){
             num4 = (int)(Math.random()*52);
         }
         num5 = (int)(Math.random()*52);
-        while(num5==num4){
+        while(num5==num4 || num5==num3 || num5==num2 || num5==num1){
             num5 = (int)(Math.random()*52);
         }
         //end of random number code block
+
         
         String[] randHand = new String[5]; //creates new array with space for 5 items
         //Assigns each space of the array a card from the shuffled deck
