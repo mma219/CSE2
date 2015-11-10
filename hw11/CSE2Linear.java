@@ -16,7 +16,7 @@ public class CSE2Linear { //create the main class
         System.out.println(printed); //print the string
     }
     public static int[] shuffle(int[] grades) { //shuffling method
-        for (int i=0; i<grades.length; i++) {	//find a random member to swap with
+        for (int i=0; i<grades.length; i++) {	//find a random number to swap with
 	        int target = (int) (grades.length * Math.random() ); //picks random number between 0 and grades.length
 	        //swap the values
 	        int temp = grades[target];
