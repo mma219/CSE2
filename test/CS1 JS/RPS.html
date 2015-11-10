@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css">
+textarea {
+	background-color:lightblue;
+	border: 0px;
+	font-size: 25px;
+	resize:none;
+}
+body{
+	background-color:lightblue;
+	font-size:25px;
+	font-family: courier;
+}
+input{
+	background-color:lightblue;
+	font-size:25px;
+	border:0;
+}
+#result {
+    text-align:center;
+ }
+#shoot {
+	border:solid;
+	font-size: 35px;
+}
+#display {
+	text-align:center;
+}
+#motivation {
+	text-align:center;
+}
+
+
+
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	function show(value) {
+		document.getElementById("display").value=(value); 
+	}
+	function reset() {
+		document.getElementById("player").value*=0;
+		document.getElementById("computer").value*=0;
+		document.getElementById("motivation").value="To get started, click on an icon and then hit 'SHOOT!'";
+	}
+
+	function score(winner,player,computer) {
+		var x = 0;
+
+		if((winner=="player")||(winner=="computer")) {
+			x = Number(document.getElementById(winner).value);
+		}
+		if(winner=="player") { 
+			document.getElementById(winner).value=x+1;
+			document.getElementById("result").value=("YOU WIN! "+player+" BEATS "+computer);
+
+		}
+		if(winner=="computer") {
+			document.getElementById(winner).value=x+1;
+			document.getElementById("result").value=("YOU LOSE! "+computer+" BEATS "+player);
+		}
+		if(winner=="tie") {
+			document.getElementById("result").value=("TIE!");
+		}
+
+		var playerScore = Number(document.getElementById("player").value);
+		var computerScore = Number(document.getElementById("computer").value);
+
+		if(playerScore>computerScore) {
+			document.getElementById("motivation").value="You're winning!";
+		}
+		if(playerScore<computerScore) {
+			document.getElementById("motivation").value="You're losing! Pick it up!";
+		}
+		if(playerScore==computerScore) {
+			document.getElementById("motivation").value="All tied up!";
+		}
+
+	}
+	function shoot(display) {
+		var winner="";
+		var player=display;
+		var computer ="";
+		var rand = Math.floor((Math.random()*3)+1);
+		switch(rand) { //using switch statements learned in Java from CS2
+			case 1:
+				computer="ROCK";
+				break;
+
+			case 2:
+				computer="PAPER";
+				break;
+
+			case 3:
+				computer="SCISSOR";
+				break;
+		}
+
+		if(player=="ROCK") {
+			if(computer=="ROCK") {
+				winner="tie";
+			}
+			if(computer=="PAPER") {
+				winner="computer";
+			}
+			if(computer=="SCISSOR") {
+				winner="player";
+			}
+		}
+
+		if(player=="PAPER") {
+			if(computer=="ROCK") {
+				winner="player";
+			}
+			if(computer=="PAPER") {
+				winner="tie";
+			}
+			if(computer=="SCISSOR") {
+				winner="computer";
+			}
+		}
+
+		if(player=="SCISSOR") {
+			if(computer=="ROCK") {
+				winner="computer";
+			}
+			if(computer=="PAPER") {
+				winner="player";
+			}
+			if(computer=="SCISSOR") {
+				winner="tie";
+			}
+		}
+
+	
+		score(winner,player,computer);
+	}
+
+
+</script>
+<br><br>
+
+<div align="center">
+<table>
+	<tr>
+		<td> <textarea id="motivation" style="font-family:courier" rows=1 cols=60 readonly>To get started, click on an icon and then hit 'SHOOT!'</textarea> </td>
+
+	</tr>
+</table>
+<table>
+	<tr>
+		<td> Your Score:</td>
+		<td> Computer Score:</td>
+	</tr>
+	<tr> 
+		<td> <textarea id="player" rows=1 readonly>0</textarea> </td>
+		<td> <textarea id="computer" rows=1 readonly>0</textarea>  </td>
+		<td> <input type="button" id="reset" value="reset" onclick="reset();"></td> 
+</table>
+<br>
+<input type="image" src="http://www.clipartbest.com/cliparts/eTM/kxk/eTMkxkEXc.png" width="170" height="170" id="RPS" value="ROCK" onclick="show(value);"> &nbsp &nbsp
+<input type="image" src="http://images.clipartpanda.com/airplane-clipart-no-background-paper-airplane-clipart2.png" width="170" height="170" id="RPS" value="PAPER" onclick="show(value);"> &nbsp &nbsp
+<input type="image" src="http://www.downloadclipart.net/large/184-scissors-2-design.png" width="170" height="170" id="RPS" value="SCISSOR" onclick="show(value);">
+<br>
+<br>
+<textarea cols="40" rows="1" id="display" readonly> </textarea>
+<br>
+<br>
+
+
+<input type="button" id="shoot" value="SHOOT!" onclick="shoot(document.getElementById('display').value);"> 
+<br>
+<br>
+
+ <textarea cols="40" rows="1" id="result" readonly> </textarea> 
+
+
+</div>
+
+
+
+</body>
+</html>
