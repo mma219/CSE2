@@ -15,6 +15,7 @@ public class CSE2Linear { //create the main class
         }
         System.out.println(printed); //print the string
     }
+    
     public static int[] shuffle(int[] grades) { //shuffling method
         for (int i=0; i<grades.length; i++) {	//find a random number to swap with
 	        int target = (int) (grades.length * Math.random() ); //picks random number between 0 and grades.length
@@ -25,6 +26,34 @@ public class CSE2Linear { //create the main class
         }
         return grades; //return shuffled deck, which will be printed with the printArray method
     }
+    
+    public static void binarySearch(int[] list, int key) { //create the method which takes an array and integer as input, and returns nothing
+        int low=0; //initalize low for binary search
+        int iterations = 0; //initialize iteration counter
+        boolean found = false; //boolean to see if number was found 
+        int high = list.length - 1; //create the high of the binary search
+        while(high>=low) { //loop to keep running until low > high
+            iterations++; //count iterations
+            int mid = (low+high)/2; //average of low and high = mid
+            if(key < list[mid]) { //if key is less than the item in the array, make the high one less than the mid
+                high = mid-1;
+            }
+            else if(key == list[mid]) { //if the key is equal to the array item, change "found" to true, and exit the loop
+                found = true;
+                high = low-1;
+            }
+            else { //if key > item in the array, make the low one more than the mid
+                low = mid + 1;
+            }
+        } //close the loop
+        if(found==true) { //message if key found in the array
+            System.out.println(key+" was found after "+iterations+" iterations.");
+        }
+        else{ //message if key not found in array
+            System.out.println(key+" was not found after "+iterations+" iterations.");
+        }
+    } //close the method
+    
     public static void linearSearch(int[] finalGrades,int searchTerm) { //create linear search method
         int iterations = 0; //initalize counter var
         boolean found=false; //determines whether it was found
@@ -77,7 +106,7 @@ public class CSE2Linear { //create the main class
         printArray(finalGrades,"Grades "); //run the method to print the array
         System.out.print("Enter a grade to search for: "); //message asking for input for search
         int searchTerm = myScanner.nextInt(); //receive input for search
-        linearSearch(finalGrades,searchTerm); //run method to search the array
+        binarySearch(finalGrades,searchTerm); //run method to search the array
         shuffle(finalGrades); //run method to shuffle array
         printArray(finalGrades,"Shuffled grades "); //run method to print the array
         System.out.print("Enter a grade to search for: "); //message asking for input for search
