@@ -1,5 +1,31 @@
 import java.util.Scanner;
 public class Search{
+    public static void binarySearch(int[] list, int key) { //create the method which takes an array and integer as input, and returns nothing
+        int low=0; //initalize low for binary search
+        int iterations = 0; //initialize iteration counter
+        boolean found = false; //boolean to see if number was found 
+        int high = list.length - 1; //create the high of the binary search
+        while(high>=low) { //loop to keep running until low > high
+            iterations++; //count iterations
+            int mid = (low+high)/2; //average of low and high = mid
+            if(key < list[mid]) { //if key is less than the item in the array, make the high one less than the mid
+                high = mid-1;
+            }
+            else if(key == list[mid]) { //if the key is equal to the array item, change "found" to true, and exit the loop
+                found = true;
+                high = low-1;
+            }
+            else { //if key > item in the array, make the low one more than the mid
+                low = mid + 1;
+            }
+        } //close the loop
+        if(found==true) { //message if key found in the array
+            System.out.println(key+" was found after "+iterations+" iterations.");
+        }
+        else{ //message if key not found in array
+            System.out.println(key+" was not found after "+iterations+" iterations.");
+        }
+    } //close the method
     public static void main(String[] args) {
         Scanner myScanner = new Scanner(System.in);
         int []array1 = new int[5000];
@@ -56,22 +82,7 @@ public class Search{
         if(myInt<0) {
             return;
         }
-        int middle = (array2.length)/2;
-        boolean searchFound = false;
-        while(searchFound==false) {
-            if(array2[middle]>=myInt) {
-                middle=(middle)+(middle/2);
-            }
-            else if(array2[middle]<myInt) {
-                middle=(middle)-(middle/2);
-            }
-            if(array2[middle]==myInt) {
-                System.out.println("found"+array2[middle]+myInt);
-                searchFound = true;
-                
-            }
-        
-        }
+        binarySearch(array2,myInt);
         
         
     }
