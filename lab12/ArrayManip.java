@@ -25,7 +25,7 @@ public class ArrayManip {
         for(int i=0;i<length;i++) {
             newArray[i] = myArray[smallest][i];
         }
-        
+    
         return newArray;
     }
     public static int[] findLargest(int[][]myArray) {
